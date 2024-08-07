@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -58,7 +59,7 @@ public class LibroController {
         }
     }
 
-    @PutMapping("/categoria")
+    @PutMapping("/libro")
     public ResponseEntity<Map<String, String>> editarLibro(@RequestParam Long libroId, @RequestBody Libro newlibro){
         Map<String, String> response = new HashMap<>();
         try {
@@ -77,6 +78,21 @@ public class LibroController {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.put("message", "El libro no se pudo editar!");
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+    @DeleteMapping("/libro")
+    public ResponseEntity<Map<String, String>> eliminarLibro(@RequestParam Long libroId){
+        Map<String, String> response = new HashMap<>();
+        try {
+            Libro libro = libroService.buscarLibroPorId(libroId);
+            libroService.eliminarLibro(libro);
+            response.put("message","Libro eliminado con exito!");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("message", "Error");
+            response.put("err", "Hubo un error al crear el libro");
             return ResponseEntity.badRequest().body(response);
         }
     }
