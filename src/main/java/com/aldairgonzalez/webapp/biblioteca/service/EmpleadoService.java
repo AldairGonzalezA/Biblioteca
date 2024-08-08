@@ -16,25 +16,21 @@ public class EmpleadoService implements IEmpleadoService {
 
     @Override
     public List<Empleado> listarEmpleados() {
-       
+       return empleadoRepository.findAll();
     }
 
     @Override
     public Empleado guardarEmpleado(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'guardarEmpleado'");
+        return empleadoRepository.save(empleado);
     }
 
     @Override
     public Empleado buscarEmpleadoPorId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarEmpleadoPorId'");
+        return empleadoRepository.findById(id).orElse(null);
     }
 
     @Override
     public void eliminarEmpleado(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarEmpleado'");
+       empleadoRepository.delete(empleado);
     }
-
 }
