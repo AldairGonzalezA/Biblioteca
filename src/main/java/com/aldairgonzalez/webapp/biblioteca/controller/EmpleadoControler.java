@@ -45,9 +45,15 @@ public class EmpleadoControler {
     public ResponseEntity<Map<String, String>> agregarEmpleado(@RequestBody Empleado empleado){
         Map<String, String> response = new HashMap<>();
         try {
-            empleadoService.guardarEmpleado(empleado);
+            if(empleadoService.guardarEmpleado(empleado)){
             response.put("message","Se agrego con exito");
             return ResponseEntity.ok(response);
+            }else{
+                response.put("message", "Error");
+            response.put("err", "Hubo un error al crear el Empleado");
+            return ResponseEntity.badRequest().body(response);
+            }
+            
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al crear el Empleado");
