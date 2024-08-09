@@ -44,7 +44,7 @@ public class CategoriaService implements ICategoriaService {
         Boolean flag = false;
 
         for (Categoria categoria : categorias) {
-            if(categoriaNueva.getNombreCategoria().trim().equalsIgnoreCase(categoria.getNombreCategoria().trim()) && categoriaNueva.getId().equals(categoria.getId())){
+            if(categoriaNueva.getNombreCategoria().trim().equalsIgnoreCase(categoria.getNombreCategoria().trim()) && !categoriaNueva.getId().equals(categoria.getId())){
                 return true;
             }
         }

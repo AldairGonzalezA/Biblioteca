@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aldairgonzalez.webapp.biblioteca.model.Prestamo;
 import com.aldairgonzalez.webapp.biblioteca.service.PrestamoService;
+import com.aldairgonzalez.webapp.biblioteca.util.MethodType;
 
 @Controller
 @RestController
@@ -49,9 +50,16 @@ public class PrestamoController {
     public ResponseEntity<Map<String, String>> agregarPrestamo(@RequestBody Prestamo prestamo){
         Map<String, String> response = new HashMap<>();
         try {
-            prestamoService.guardarPrestamo(prestamo);
-            response.put("message", "Prestamo creado con exito");
-            return ResponseEntity.ok(response);
+            if(prestamoService.guardarPrestamo(prestamo, MethodType.POST ).equals(1)){
+                response.put("message","Prestamo creado con exito");
+                return ResponseEntity.ok(response);
+            }else if(prestamoService.guardarPrestamo(prestamo, MethodType.POST).equals(2)){
+                response.put("Message", "Un libro seleccionado no esta disponible");
+                return ResponseEntity.badRequest().body(response);
+            }else{
+                response.put("Message", "El Usuario tiene un prestamo vigente");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo error al crear el Prestamo");
@@ -70,7 +78,7 @@ public class PrestamoController {
             prestamo.setEmpleado(nuevoPrestamo.getEmpleado());
             prestamo.setCliente(nuevoPrestamo.getCliente());
             prestamo.setLibros(nuevoPrestamo.getLibros());
-            prestamoService.guardarPrestamo(prestamo);
+            prestamoService.guardarPrestamo(prestamo, MethodType.PUT);
             response.put("messge", "Prestamo editado con exito!");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
