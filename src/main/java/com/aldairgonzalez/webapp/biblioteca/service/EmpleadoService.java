@@ -24,9 +24,9 @@ public class EmpleadoService implements IEmpleadoService {
         if(!verificarDpiDupicado(empleado)){
             empleadoRepository.save(empleado);
             return true;
-        }else{
-            return false;
         }
+         return false;
+        
     }
 
     @Override
@@ -44,7 +44,7 @@ public class EmpleadoService implements IEmpleadoService {
         List<Empleado> empleados = listarEmpleados();
         Boolean flag = false;
         for (Empleado empleado : empleados) {
-            if(empleado.getDpi().equals(empleadoNuevo.getDpi())){
+            if(empleado.getDpi().equals(empleadoNuevo.getDpi()) && !empleado.getEmpleadoId().equals(empleadoNuevo.getEmpleadoId())){
                 flag = true;
             }
         }

@@ -9,7 +9,7 @@ public interface ILibroService {
 
     public Libro guardarLibro(Libro libro);
 
-    public Libro buscarLibroPorId(Long libroId);
+    public Libro buscarLibroPorId(Long id);
 
     public void eliminarLibro(Libro libro);
     

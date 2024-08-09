@@ -37,9 +37,9 @@ public class LibroController {
     }
 
     @GetMapping("/libro")
-    public ResponseEntity<Libro> buscarLibroPorId(@RequestParam Long libroId){
+    public ResponseEntity<Libro> buscarLibroPorId(@RequestParam Long id){
         try {
-            return ResponseEntity.ok(libroService.buscarLibroPorId(libroId));
+            return ResponseEntity.ok(libroService.buscarLibroPorId(id));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }
@@ -60,10 +60,10 @@ public class LibroController {
     }
 
     @PutMapping("/libro")
-    public ResponseEntity<Map<String, String>> editarLibro(@RequestParam Long libroId, @RequestBody Libro newlibro){
+    public ResponseEntity<Map<String, String>> editarLibro(@RequestParam Long id, @RequestBody Libro newlibro){
         Map<String, String> response = new HashMap<>();
         try {
-            Libro libroOld = libroService.buscarLibroPorId(libroId);
+            Libro libroOld = libroService.buscarLibroPorId(id);
             libroOld.setIsbn(newlibro.getIsbn());
             libroOld.setNombre(newlibro.getNombre());
             libroOld.setSipnosis(newlibro.getSipnosis());
@@ -83,10 +83,10 @@ public class LibroController {
     }
 
     @DeleteMapping("/libro")
-    public ResponseEntity<Map<String, String>> eliminarLibro(@RequestParam Long libroId){
+    public ResponseEntity<Map<String, String>> eliminarLibro(@RequestParam Long id){
         Map<String, String> response = new HashMap<>();
         try {
-            Libro libro = libroService.buscarLibroPorId(libroId);
+            Libro libro = libroService.buscarLibroPorId(id);
             libroService.eliminarLibro(libro);
             response.put("message","Libro eliminado con exito!");
             return ResponseEntity.ok(response);

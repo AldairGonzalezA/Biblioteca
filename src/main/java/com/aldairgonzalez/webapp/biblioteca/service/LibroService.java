@@ -25,8 +25,8 @@ public class LibroService implements ILibroService {
     }
 
     @Override
-    public Libro buscarLibroPorId(Long libroId) {
-        return libroRepository.findById(libroId).orElse(null);
+    public Libro buscarLibroPorId(Long id) {
+        return libroRepository.findById(id).orElse(null);
     }
 
     @Override

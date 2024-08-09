@@ -59,7 +59,7 @@ public class PrestamoController {
         }
     }
 
-    @PutMapping("/pretamo")
+    @PutMapping("/prestamo")
     public ResponseEntity<Map<String, String>> editarPrestamo(@RequestParam Long id, @RequestBody Prestamo nuevoPrestamo){
         Map<String, String> response = new HashMap<>();
         try {

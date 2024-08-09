@@ -50,7 +50,7 @@ public class EmpleadoControler {
             return ResponseEntity.ok(response);
             }else{
                 response.put("message", "Error");
-            response.put("err", "Hubo un error al crear el Empleado");
+            response.put("err", "El cliente no se creo por que tiene un dpi ya existente");
             return ResponseEntity.badRequest().body(response);
             }
             

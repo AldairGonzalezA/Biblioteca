@@ -25,12 +25,30 @@ public class CategoriaService implements ICategoriaService {
     }
 
     @Override
-    public Categoria guardarCategoria(Categoria categoria) {
-        return categoriaRepository.save(categoria);
+    public Boolean guardarCategoria(Categoria categoria) {
+       if(!verificarCategoriaDuplicada(categoria)){
+             categoriaRepository.save(categoria);
+             return true;
+       }
+       return false;
     }
 
     @Override
     public void eliminarCategoria(Categoria categoria) {
         categoriaRepository.delete(categoria);
+    }
+
+    @Override
+    public Boolean verificarCategoriaDuplicada(Categoria categoriaNueva) {
+        List<Categoria> categorias = listarCategorias();
+        Boolean flag = false;
+
+        for (Categoria categoria : categorias) {
+            if(categoriaNueva.getNombreCategoria().trim().equalsIgnoreCase(categoria.getNombreCategoria().trim()) && categoriaNueva.getId().equals(categoria.getId())){
+                return true;
+            }
+        }
+
+        return flag;
     }
 }

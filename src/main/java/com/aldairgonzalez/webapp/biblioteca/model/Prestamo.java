@@ -32,6 +32,6 @@ public class Prestamo {
     @ManyToMany
     @JoinTable(name = "prestamos_libros",
     joinColumns = @JoinColumn(name = "prestamo_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "libros_id",referencedColumnName = "libroId"))
+    inverseJoinColumns = @JoinColumn(name = "libros_id",referencedColumnName = "id"))
     private List<Libro> libros;
 }
