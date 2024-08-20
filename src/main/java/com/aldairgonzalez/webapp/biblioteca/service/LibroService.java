@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.aldairgonzalez.webapp.biblioteca.model.Libro;
 import com.aldairgonzalez.webapp.biblioteca.repository.LibroRepository;
+import com.aldairgonzalez.webapp.biblioteca.util.EstadoLibro;
+import com.aldairgonzalez.webapp.biblioteca.util.MethodType;
 
 @Service
 public class LibroService implements ILibroService {
@@ -20,8 +22,16 @@ public class LibroService implements ILibroService {
     }
 
     @Override
-    public Libro guardarLibro(Libro libro) {
-       return libroRepository.save(libro);
+    public Libro guardarLibro(Libro libro, MethodType methodType) {
+        if(methodType == MethodType.POST){
+            libro.setDisponibilidad(EstadoLibro.DISPONIBLE);
+            return libroRepository.save(libro);
+        }else if(methodType == MethodType.PUT){
+            return libroRepository.save(libro);
+        }else{
+            return null;
+        }
+       
     }
 
     @Override

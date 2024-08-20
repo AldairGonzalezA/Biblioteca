@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aldairgonzalez.webapp.biblioteca.model.Libro;
 import com.aldairgonzalez.webapp.biblioteca.service.LibroService;
+import com.aldairgonzalez.webapp.biblioteca.util.MethodType;
 
 @Controller
 @RestController
@@ -49,12 +50,12 @@ public class LibroController {
     public ResponseEntity<Map<String, String>> agregarLibro(@RequestBody Libro libro){
         Map<String, String> response = new HashMap<>();
         try {
-            libroService.guardarLibro(libro);
+            libroService.guardarLibro(libro,MethodType.POST);
             response.put("message", "Libro creado con exito");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.put("message", "Error");
-            response.put("err", "Hubo un error al crear el libro");
+            response.put("err", "Hubo un error al crear el libro " + e.getMessage());
             return ResponseEntity.badRequest().body(response);
         }
     }
@@ -73,7 +74,7 @@ public class LibroController {
             libroOld.setNumeroEstanteria(newlibro.getNumeroEstanteria());
             libroOld.setCluster(newlibro.getCluster());
             libroOld.setCategoria(newlibro.getCategoria());
-            libroService.guardarLibro(libroOld);
+            libroService.guardarLibro(libroOld, MethodType.PUT);
             response.put("message", "Libro editado con exito!");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
