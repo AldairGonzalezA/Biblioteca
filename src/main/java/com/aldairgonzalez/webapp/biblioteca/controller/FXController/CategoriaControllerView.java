@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.aldairgonzalez.webapp.biblioteca.model.Categoria;
 import com.aldairgonzalez.webapp.biblioteca.service.CategoriaService;
@@ -21,7 +22,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.Setter;
 
-public class CategoriaController implements Initializable {
+@Component
+public class CategoriaControllerView implements Initializable {
 
     
     @FXML
@@ -42,6 +44,7 @@ public class CategoriaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       cargarDatos();
        
     }
 
@@ -61,7 +64,7 @@ public class CategoriaController implements Initializable {
 
     public void cargarDatos(){
         tableCategorias.setItems(listarCategorias());
-        colIdCategoria.setCellFactory(new PropertyValueFactory<Categoria,Long>("id"));
+        colIdCategoria.setCellValueFactory(new PropertyValueFactory<Categoria,Long>("id"));
         colNombreCategoria.setCellValueFactory(new PropertyValueFactory<Categoria,String>("nombreCategoria"));
     }
 

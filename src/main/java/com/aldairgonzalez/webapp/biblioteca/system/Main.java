@@ -7,6 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.aldairgonzalez.webapp.biblioteca.BibliotecaApplication;
+import com.aldairgonzalez.webapp.biblioteca.controller.FXController.CategoriaControllerView;
 import com.aldairgonzalez.webapp.biblioteca.controller.FXController.IndexController;
 
 import javafx.application.Application;
@@ -55,8 +56,17 @@ public class Main extends Application {
 
     public void indexView(){
         try {
-            IndexController indexView = (IndexController)switchScene("index.fxml", 600, 400);
+            IndexController indexView = (IndexController)switchScene("index.fxml", 1024, 650);
             indexView.setStage(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void CategoriaView(){
+        try {
+            CategoriaControllerView categoriaView = (CategoriaControllerView)switchScene("CategoriaView.fxml", 1024, 650);
+            categoriaView.setStage(this);
         } catch (Exception e) {
             e.printStackTrace();
         }

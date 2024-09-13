@@ -3,7 +3,6 @@ package com.aldairgonzalez.webapp.biblioteca.controller.FXController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.aldairgonzalez.webapp.biblioteca.model.Categoria;
@@ -33,7 +32,7 @@ public class IndexController implements Initializable {
     @FXML
     public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnCategorias){
-
+            stage.CategoriaView();
         }else if(event.getSource() == btnClientes){
 
         }else if(event.getSource() == btnEmpleados){

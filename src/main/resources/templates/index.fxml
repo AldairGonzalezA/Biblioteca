@@ -3,11 +3,18 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#cargarFormEditar" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aldairgonzalez.webapp.biblioteca.controller.FXController.IndexController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aldairgonzalez.webapp.biblioteca.controller.FXController.IndexController">
    <children>
-      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="600.0">
+      <ImageView fitHeight="625.0" fitWidth="1024.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/MenuPrincipal.png" />
+         </image>
+      </ImageView>
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1024.0">
         <menus>
           <Menu mnemonicParsing="false" text="Menus">
             <items>
