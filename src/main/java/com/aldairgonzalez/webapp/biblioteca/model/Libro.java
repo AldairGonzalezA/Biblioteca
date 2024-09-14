@@ -13,9 +13,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
+@ToString
 @Table(name = "Libros")
 public class Libro {
 
@@ -34,5 +36,10 @@ public class Libro {
     private String cluster;
     @ManyToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
+
+    @Override
+    public String toString(){
+        return  id + " " + "ISBN" + isbn + " " + nombre;
+    }
 
 }

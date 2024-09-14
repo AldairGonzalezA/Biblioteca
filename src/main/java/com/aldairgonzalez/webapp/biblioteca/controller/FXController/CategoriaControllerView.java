@@ -27,9 +27,9 @@ public class CategoriaControllerView implements Initializable {
 
     
     @FXML
-    TextField tfId, tfNombre;
+    TextField tfId, tfNombre, tfBuscar;
     @FXML
-    Button btnGuardar,btnLimpiar,btnEliminar;
+    Button btnGuardar,btnLimpiar,btnEliminar, btnRegresar, btnBuscar;
     @FXML
     TableView tableCategorias;
     @FXML
@@ -55,6 +55,21 @@ public class CategoriaControllerView implements Initializable {
             }else{
                 editarCategoria();
             }
+        }else if(event.getSource() == btnEliminar){
+            eliminarCategoria();
+        }else if(event.getSource() == btnLimpiar){
+            limpiarFormulario();
+        }else if(event.getSource() == btnRegresar){
+            stage.indexView();
+        }else if(event.getSource() == btnBuscar){
+            tableCategorias.getItems().clear();
+            if(tfBuscar.getText().isBlank()){
+                cargarDatos();
+            }else{
+                tableCategorias.getItems().add(buscarCategoria());
+                colIdCategoria.setCellValueFactory(new PropertyValueFactory<Categoria,Long>("id"));
+                colNombreCategoria.setCellValueFactory(new PropertyValueFactory<Categoria,String>("nombreCategoria"));
+            }
         }
     }
 
@@ -74,6 +89,10 @@ public class CategoriaControllerView implements Initializable {
         tfNombre.setText(categoria.getNombreCategoria());
     }
 
+    public void limpiarFormulario(){
+        tfId.clear();
+        tfNombre.clear();
+    }
 
     public void agregarCategoria(){
         Categoria categoria = null;
@@ -95,5 +114,7 @@ public class CategoriaControllerView implements Initializable {
         cargarDatos();
     }
 
-
+    public Categoria buscarCategoria(){
+        return categoriaService.buscarCategoriaPorId(Long.parseLong(tfBuscar.getText()));
+    }
 }

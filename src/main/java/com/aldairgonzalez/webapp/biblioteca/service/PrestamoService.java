@@ -1,5 +1,7 @@
 package com.aldairgonzalez.webapp.biblioteca.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class PrestamoService implements IPrestamosService{
        }else if(methodType == MethodType.PUT){
              prestamoRepository.save(prestamo);
        }else{
-            //return prestamoRepository.save(null);
+            
        }
        return token;
     }
@@ -85,6 +87,18 @@ public class PrestamoService implements IPrestamosService{
         return flag;
     }
 
-    
+    @Override
+    public void devolverLibros(Prestamo prestamo){
+        if(prestamo != null && prestamo.getVigencia()){
+            List<Libro> libros = prestamo.getLibros();
+            for(Libro libro : libros){
+                libro.setDisponibilidad(EstadoLibro.DISPONIBLE);
+                libroService.guardarLibro(libro,MethodType.PUT);
+            }
+            prestamo.setVigencia(false);
+            prestamo.setFechaDeDevolucion(Date.valueOf(LocalDate.now()));
+            prestamoRepository.save(prestamo);
+        }
+    }
 
 }

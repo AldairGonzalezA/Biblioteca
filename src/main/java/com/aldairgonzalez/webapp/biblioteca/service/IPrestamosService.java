@@ -18,4 +18,6 @@ public interface IPrestamosService {
     public Boolean verificarPrestamoActivo(Prestamo prestamoNuevo);
 
     public Boolean verificarLibro(Prestamo prestamoNuevo);
+
+    public void devolverLibros(Prestamo Prestamo);
 }

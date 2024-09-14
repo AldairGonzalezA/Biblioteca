@@ -20,4 +20,10 @@ public class Categoria {
     private Long id;
     @NotNull(message= "NombreCategoria no puede ser nulo")
     private String nombreCategoria;
+
+    @Override
+    public String toString(){
+        return nombreCategoria;
+    }
+    
 }

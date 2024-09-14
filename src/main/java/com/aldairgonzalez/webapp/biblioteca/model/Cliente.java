@@ -21,4 +21,9 @@ public class Cliente {
     private String apellidoCliente;
     @NotNull(message = "TelefonoCliente no puede ser nulo")
     private String telefonoCliente;
+    
+    @Override
+    public String toString(){
+        return dpi + " " + nombreCliente + " " + apellidoCliente;
+    }
 }

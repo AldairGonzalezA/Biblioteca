@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aldairgonzalez.webapp.biblioteca.controller.FXController.CategoriaControllerView">
    <children>
       <ImageView fitHeight="650.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
@@ -24,8 +23,16 @@
       </TableView>
       <TextField fx:id="tfId" editable="false" layoutX="26.0" layoutY="221.0" prefHeight="38.0" prefWidth="175.0" promptText="ID" />
       <TextField fx:id="tfNombre" layoutX="26.0" layoutY="370.0" prefHeight="38.0" prefWidth="251.0" promptText="Nombre" />
-      <Button fx:id="btnGuardar" layoutX="26.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="89.0" text="Guardar" />
-      <Button fx:id="btnLimpiar" layoutX="133.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="117.0" text="Vaciar Formulario" />
-      <Button fx:id="btnEliminar" layoutX="903.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="89.0" text="Eliminar" />
+      <Button fx:id="btnGuardar" layoutX="26.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="89.0" style="-fx-background-color: b693ae;" text="Guardar" />
+      <Button fx:id="btnLimpiar" layoutX="133.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="117.0" style="-fx-background-color: b693ae;" text="Vaciar Formulario" />
+      <Button fx:id="btnEliminar" layoutX="903.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="89.0" style="-fx-background-color: b693ae;" text="Eliminar" />
+      <Button fx:id="btnRegresar" layoutX="26.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="54.0" prefWidth="89.0" style="-fx-background-color: b693ae;" text="Regresar" />
+      <TextField fx:id="tfBuscar" layoutX="400.0" layoutY="141.0" prefHeight="25.0" prefWidth="305.0" promptText="Buscar Categoria" />
+      <Button fx:id="btnBuscar" layoutX="718.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="32.0" text="Button" />
+      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="717.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/Lupa.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

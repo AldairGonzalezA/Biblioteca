@@ -1,6 +1,17 @@
 package com.aldairgonzalez.webapp.biblioteca.util;
 
 public enum EstadoLibro {
-    DISPONIBLE,
-    EN_PRESTAMO,
+    DISPONIBLE("Disponible"),
+    EN_PRESTAMO("En Prestamo");
+
+    private final String message;
+
+    EstadoLibro(String message){
+        this.message = message;
+    }
+
+    @Override
+    public String toString(){
+        return message;
+    }
 }
